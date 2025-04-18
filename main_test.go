@@ -1,7 +1,9 @@
-package main
+package main_test
 
 import (
 	"testing"
+
+	counter "github.com/tarantino19/counter"
 )
 
 // ANSI color codes
@@ -28,11 +30,10 @@ func TestCountWords(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := CountWords([]byte(tc.input))
+			result := counter.CountWords([]byte(tc.input))
 			if result != tc.wants {
 				t.Errorf("%s%s Test Failed: Expected %d, got %d%s", colorRed, tc.name, tc.wants, result, colorReset)
 			}
 		})
 	}
 }
-
