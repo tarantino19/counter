@@ -3,32 +3,19 @@ package main
 import (
 	"fmt"
 	"os"
+
+	// "strings"
+	"bytes"
 )
 
-func main (){
-	data, _ := os.ReadFile("./words.txt")
-
-	wordCount := CountWords(data)
-
-	fmt.Println("wordCount:", wordCount)
-}
-
-func CountWords (data []byte) int{
-
-	if len(data) == 0 {
-		return 0
-	} //deal with edge case first as guard
-
-	wordCount := 0
-
-	for _ , x := range data {
-		if x == ' ' {    //if there's a space, add one word count //can also use const = 32 (space in ascii)
-			wordCount++
-		}
+	func main (){
+		data, _ := os.ReadFile("./words.txt")
+		wordCount := CountWords(data)
+		fmt.Println("wordCount:", wordCount)
 	}
 
-	wordCount++
-
-	return wordCount
-
-}
+	//use go built in library for returning strings
+	func CountWords (data []byte) int{
+		words := bytes.Fields(data) //package more suited for bytes (since it came from os.ReadFile())
+		return len(words)
+	}
