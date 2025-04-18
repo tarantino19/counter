@@ -1,0 +1,2 @@
+[31mFAILED to read file: open ./wordsERROR.txt: no such file or directory[0m
+exit status 1
